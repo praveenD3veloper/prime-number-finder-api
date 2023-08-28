@@ -11,6 +11,6 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 script:
-  - mvn test -B -f ./core/pom.xml
-  - mvn clean install -B -Dmaven.test.skip=true -f ./core/pom.xml
-  - mvn clean package -B -f ./server/pom.xml
+  - mvn test -B -f 
+  - mvn clean install -B -Dmaven.test.skip=true -f
+  - mvn clean package -B -f

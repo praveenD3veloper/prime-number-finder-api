@@ -13,8 +13,26 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>prime-number-finder-api</name>
 	<description>Rest API for finding prime numbers in the range of N</description>
+
+	<licenses>
+		<license>
+			<name>The GNU General Public License v3.0</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:git@github.com:praveenD3veloper/prime-number-finder-api.git</connection>
+		<developerConnection>scm:git:git@github.com:praveenD3veloper/prime-number-finder-api.git</developerConnection>
+		<url>https://github.com/praveenD3veloper/prime-number-finder-api/</url>
+		<tag>HEAD</tag>
+	</scm>
+
 	<properties>
 		<java.version>11</java.version>
+		<springfox.version>2.7.0</springfox.version>
+		<coverall.version>4.3.0</coverall.version>
+		<jacoco.version>0.7.6.201602180812</jacoco.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -39,13 +57,13 @@
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>2.7.0</version>
+			<version>${springfox.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.7.0</version>
+			<version>${springfox.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -55,6 +73,26 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>${coverall.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

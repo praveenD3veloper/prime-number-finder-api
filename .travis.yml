@@ -3,8 +3,6 @@ jdk:
   - openjdk11
 os:
   - linux
-install:
-  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true --quiet --batch-mode --show-version
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/

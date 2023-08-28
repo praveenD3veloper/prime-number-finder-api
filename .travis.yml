@@ -3,5 +3,7 @@ jdk:
   - openjdk11
 os:
   - linux
+before_install:
+  - chmod +x mvnw
 script:
   - ./mvnw clean install -B

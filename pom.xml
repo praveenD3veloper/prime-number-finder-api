@@ -33,6 +33,7 @@
 		<springfox.version>2.7.0</springfox.version>
 		<coverall.version>4.3.0</coverall.version>
 		<jacoco.version>0.8.4 </jacoco.version>
+		<jaxb.version>2.4.0-b180830.0359</jaxb.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -66,6 +67,12 @@
 			<version>${springfox.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -79,6 +86,9 @@
 				<groupId>org.eluder.coveralls</groupId>
 				<artifactId>coveralls-maven-plugin</artifactId>
 				<version>${coverall.version}</version>
+				<configuration>
+					<repoToken>HkTiNzJzDE31K2dy4El3crp53xrp2v3Rc</repoToken>
+				</configuration>
 			</plugin>
 
 			<plugin>

@@ -32,7 +32,7 @@
 		<java.version>11</java.version>
 		<springfox.version>2.7.0</springfox.version>
 		<coverall.version>4.3.0</coverall.version>
-		<jacoco.version>0.7.6.201602180812</jacoco.version>
+		<jacoco.version>0.8.4 </jacoco.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -87,9 +87,16 @@
 				<version>${jacoco.version}</version>
 				<executions>
 					<execution>
-						<id>prepare-agent</id>
+						<id>jacoco-prepare</id>
 						<goals>
 							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>report</goal>
 						</goals>
 					</execution>
 				</executions>

@@ -4,6 +4,4 @@ jdk:
 os:
   - linux
 script:
-  - mvn test -B -f 
-  - mvn clean install -B -Dmaven.test.skip=true -f
-  - mvn clean package -B -f
+  - ./mvnw clean install -B

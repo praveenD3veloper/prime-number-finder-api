@@ -67,11 +67,6 @@
 			<version>${springfox.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>${jaxb.version}</version>
-		</dependency>
 
 	</dependencies>
 
@@ -89,6 +84,13 @@
 				<configuration>
 					<repoToken>HkTiNzJzDE31K2dy4El3crp53xrp2v3Rc</repoToken>
 				</configuration>
+				<dependencies>
+				<dependency>
+					<groupId>javax.xml.bind</groupId>
+					<artifactId>jaxb-api</artifactId>
+					<version>${jaxb.version}</version>
+				</dependency>
+				</dependencies>
 			</plugin>
 
 			<plugin>

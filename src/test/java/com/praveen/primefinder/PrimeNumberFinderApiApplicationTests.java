@@ -1,4 +1,4 @@
-package com.praveen.primenumberfinderapi;
+package com.praveen.primefinder;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

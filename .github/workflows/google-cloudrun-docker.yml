@@ -54,7 +54,7 @@ on:
 env:
   PROJECT_ID: prime-number-finder-api # TODO: update Google Cloud project id
   GAR_LOCATION: europe-west2 # TODO: update Artifact Registry location
-  SERVICE: github-action-deploy # TODO: update Cloud Run service name
+  SERVICE: prime-number-finder-api # TODO: update Cloud Run service name
   REGION: europe-west2 # TODO: update Cloud Run service region
 
 jobs:

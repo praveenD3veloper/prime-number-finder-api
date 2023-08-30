@@ -16,16 +16,16 @@ public class CustomExceptionHandler extends RuntimeException {
     public CustomError notANumber(HttpServletRequest req, NumberFormatException e) {
         return new CustomError(LocalDateTime.now(), reqUrl(req),
                 HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                "Not a number. Correct format is /primes/{range} where range is positive integer.");
+                "Provided range is not a number. Correct format is /primes/{range} where range is positive integer.");
     }
     @ExceptionHandler({IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public CustomError invalidInput(HttpServletRequest req, IllegalArgumentException e) {
 
-        if(e.getMessage().equals("negative range")){
+        if(e.getMessage().equals("invalid range")){
             return new CustomError(LocalDateTime.now(), reqUrl(req),
                     HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                    "Negative range provided!. Correct format is /primes/{range} where range is positive integer.");
+                    "Invalid range provided!. Correct format is /primes/{range} where range is positive integer.");
         }
         return new CustomError(LocalDateTime.now(),  reqUrl(req), HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), e.getMessage());
     }

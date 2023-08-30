@@ -43,8 +43,8 @@ public class PrimeNumberController {
             )
             final String algorithm){
 
-        if(range < 0){
-            throw new IllegalArgumentException("negative range");
+        if(range <= 0){
+            throw new IllegalArgumentException("invalid range");
         }
         PrimeFinder primeFinder = strategySelector.selectStrategy(algorithm);
         return new ResponseEntity<>(new Result(range, primeFinder.findPrimeNumbersInRange(range)), HttpStatus.OK);

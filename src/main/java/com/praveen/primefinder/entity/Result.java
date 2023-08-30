@@ -3,11 +3,14 @@ package com.praveen.primefinder.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@ApiModel(description = "Result Object for holding prime number till range of initial value")
 public class Result {
 
     @JsonProperty
@@ -25,6 +28,7 @@ public class Result {
         this.primes = primeNumberList;
     }
 
+    @ApiModelProperty("Range")
     public long getInitial() {
         return initial;
     }
@@ -33,6 +37,7 @@ public class Result {
         this.initial = initial;
     }
 
+    @ApiModelProperty("List of prime numbers till the range of initial value")
     public List<Integer> getPrimes() {
         return primes;
     }

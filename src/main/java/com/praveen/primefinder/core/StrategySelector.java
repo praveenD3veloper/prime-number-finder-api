@@ -50,7 +50,7 @@ public class StrategySelector {
             return sieveOfEratosthenesPrimeFinder;
         }
         Supplier<PrimeFinder> strategySupplier = strategyMap.getOrDefault(requestedStrategy.toLowerCase(), () -> {
-            logger.warn("Using default strategy (sieveOfEratosthenes) for requested strategy: {}", requestedStrategy);
+            logger.warn("requested strategy: {} is invalid, using default strategy (sieveOfEratosthenes)", requestedStrategy);
             return sieveOfEratosthenesPrimeFinder;
         });
 

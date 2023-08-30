@@ -3,6 +3,7 @@ package com.praveen.primefinder.controller;
 import com.praveen.primefinder.core.PrimeFinder;
 import com.praveen.primefinder.core.StrategySelector;
 import com.praveen.primefinder.entity.Result;
+import com.praveen.primefinder.service.PrimeFinderService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,9 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "REST API for finding Prime numbers till N")
 public class PrimeNumberController {
 
-    @Autowired
-    StrategySelector strategySelector;
 
+    @Autowired
+    private PrimeFinderService primeFinderService;
     @ApiOperation( notes = "This API finds and returns list of prime numbers within the given range of N",
             value = "N")
     @ApiResponses({
@@ -46,7 +47,6 @@ public class PrimeNumberController {
         if(range <= 0){
             throw new IllegalArgumentException("invalid range");
         }
-        PrimeFinder primeFinder = strategySelector.selectStrategy(algorithm);
-        return new ResponseEntity<>(new Result(range, primeFinder.findPrimeNumbersInRange(range)), HttpStatus.OK);
+        return new ResponseEntity<>(new Result(range, primeFinderService.findPrimeNumbersInRange(range, algorithm)), HttpStatus.OK);
     }
 }

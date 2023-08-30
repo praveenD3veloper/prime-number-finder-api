@@ -1,47 +1,56 @@
 package com.praveen.primefinder.controller;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import com.praveen.primefinder.core.PrimeFinder;
-import com.praveen.primefinder.core.StrategySelector;
 import com.praveen.primefinder.entity.Result;
+import com.praveen.primefinder.service.PrimeFinderService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
-public class PrimeNumberControllerTest {
+class PrimeNumberControllerTest {
 
     @Mock
-    private StrategySelector strategySelector;
+    private PrimeFinderService primeFinderService;
 
     @InjectMocks
     private PrimeNumberController primeNumberController;
 
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
     @Test
-    public void testGetPrimeNumbers() {
-        PrimeFinder primeFinderMock = mock(PrimeFinder.class);
-        when(strategySelector.selectStrategy(anyString())).thenReturn(primeFinderMock);
-        when(primeFinderMock.findPrimeNumbersInRange(10)).thenReturn(Arrays.asList(2, 3, 5, 7));
+    void testGetPrimeNumbers_ValidInput() {
+        int range = 10;
+        String algorithm = "bruteforce";
+        Result expectedResult = new Result(10, List.of(2, 3, 5, 7));
 
-        ResponseEntity<Result> response = primeNumberController.getPrimeNumbers(10, "sieveoferatosthenes");
+        when(primeFinderService.findPrimeNumbersInRange(range, algorithm)).thenReturn(List.of(2, 3, 5, 7));
 
-        verify(strategySelector).selectStrategy("sieveoferatosthenes");
-        verify(primeFinderMock).findPrimeNumbersInRange(10);
+        ResponseEntity<Result> response = primeNumberController.getPrimeNumbers(range, algorithm);
 
         assert response.getStatusCode() == HttpStatus.OK;
         assert response.getBody() != null;
         assert response.getBody().getInitial() == 10;
         assert response.getBody().getPrimes().equals(Arrays.asList(2, 3, 5, 7));
     }
+
+    @Test
+    void testGetPrimeNumbers_InvalidRange() {
+        int range = -5;
+        String algorithm = "bruteforce";
+
+        assertThrows(IllegalArgumentException.class, () -> primeNumberController.getPrimeNumbers(range, algorithm));
+    }
 }
+

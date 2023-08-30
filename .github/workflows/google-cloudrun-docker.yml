@@ -111,7 +111,7 @@ jobs:
 
       # wait 60 seconds before deploying to cloud run
       - name: Wait for Image to Pull
-        run: sleep 60 # Wait for 60 seconds before deploying
+        run: sleep 10 # Wait for 60 seconds before deploying
 
       # END - Docker auth and build
 
@@ -121,7 +121,7 @@ jobs:
           CLOUDSDK_CORE_DISABLE_PROMPTS: '1' # Disable prompts
         run: |
           gcloud run deploy ${{ env.SERVICE }} \
-            --image=${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }} \
+            --image=${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }} \
             --platform=managed \
             --region=${{ env.REGION }} \
             --allow-unauthenticated

@@ -84,12 +84,11 @@ public class CustomError {
 
     @Override
     public String toString() {
-        return new StringBuffer("ErrorInfo {")
-                .append("url: '")
-                .append(url)
-                .append("', message: '")
-                .append(message)
-                .append("'}")
-                .toString();
+        return "ErrorInfo {" +
+                "url: '" +
+                url +
+                "', message: '" +
+                message +
+                "'}";
     }
 }

@@ -1,7 +1,5 @@
 package com.praveen.primefinder.controller;
 
-import com.praveen.primefinder.core.PrimeFinder;
-import com.praveen.primefinder.core.StrategySelector;
 import com.praveen.primefinder.entity.Result;
 import com.praveen.primefinder.service.PrimeFinderService;
 import io.swagger.annotations.*;

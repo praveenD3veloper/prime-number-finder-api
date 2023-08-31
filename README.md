@@ -38,4 +38,4 @@ In order to access the service you must hit the endpoint `http://localhost:8080/
 ## Cloud Run Deployment
   This repository has a GitHub action configured in place so that every merge, and pull request will be automatically built and deployed to the Google Cloud Run Service.  Please use the below example URL to access the service.
 
-  `https://github-action-deploy-foun5bafea-nw.a.run.app/primes/10`
+  <`https://github-action-deploy-foun5bafea-nw.a.run.app/primes/10`>

@@ -34,3 +34,8 @@ In order to access the service you must hit the endpoint `http://localhost:8080/
 
 ## Docker image
   DockerFile with the required steps to build an application as a container is added to the root directory.  Use the Dockerfile to build an image and deploy it as a container using the below commands.
+
+## Cloud Run Deployment
+  This repository has a GitHub action configured in place so that every merge, and pull request will be automatically built and deployed to the Google Cloud Run Service.  Please use the below example URL to access the service.
+
+  `https://github-action-deploy-foun5bafea-nw.a.run.app/primes/10`

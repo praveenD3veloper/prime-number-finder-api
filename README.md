@@ -6,20 +6,20 @@
 
 This application exposes an endpoint in <http://localhost:8080/primes/{range}> that can be used to find all prime numbers up to the given range.  It returns the list in response.
 
-The API is documented with [Swagger](http://swagger.io/) and the UI can be accessed on <http://localhost:9000/swagger-ui.html>.
+The API is documented with [Swagger](http://swagger.io/) and the UI can be accessed on <http://localhost:8080/swagger-ui.html>.
 
 The Spring Actuator can be accessed at <http://localhost:8080/actuator>.
 
 The Response can be controlled by using the `Accept` Media type in the request.  By default JSON response will be generated.  If the `Accept` Mediatype is set to `application/xml` , the response will be automatically provided in XML format
 
 
-## How to compile
+## Compilation
 
-Just run the following command on the project root:
+Run the following command on the project root:
 
     ./mvnw clean package
 
-To execute the binary in the shell type:
+To execute the applicatino jar:
 
     java -jar ./prime-number-finder-api/target/prime-number-finder-api-0.0.1-SNAPSHOT.jar
 
@@ -32,10 +32,17 @@ In order to access the service you must hit the endpoint `http://localhost:8080/
   * Sieve of Eratos Thenes in Parallel (Concurrent Implementation):  This implementation of the sieve of Eratos Thenes takes advantage of the Java multithreading feature to produce an efficient outcome in finding prime numbers. Request `http://localhost:8080/primes/{number}?algorithm=SieveOfEratosthenesInParallel`.
     
 
+    Alternatively you can use the below cURL command to test the API
+  * `curl -i http://localhost:8080/primes/{range}?algorithm=bruteForce`
+
 ## Docker image
   DockerFile with the required steps to build an application as a container is added to the root directory.  Use the Dockerfile to build an image and deploy it as a container using the below commands.
+  * `docker build -t prime-finder-api-image -f Dockerfile .`
+  * `docker run -d -p 8080:8080  prime-finder-api-image`
 
 ## Cloud Run Deployment
-  This repository has a GitHub action configured in place so that every merge, and pull request will be automatically built and deployed to the Google Cloud Run Service.  Please use the below example URL to access the service.
+  This repository has a GitHub action configured in place so that every merge, and pull request will be automatically built and deployed to the Google Cloud Run Service.  
+  `https://github-action-deploy-foun5bafea-nw.a.run.app/primes/{range}`
 
-  <`https://github-action-deploy-foun5bafea-nw.a.run.app/primes/10`>
+Please use the below example URL to access the service.
+  <https://github-action-deploy-foun5bafea-nw.a.run.app/primes/10>

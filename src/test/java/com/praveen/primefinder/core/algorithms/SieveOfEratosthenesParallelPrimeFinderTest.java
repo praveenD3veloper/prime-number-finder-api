@@ -7,6 +7,7 @@ import com.praveen.primefinder.core.PrimeFinder;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SieveOfEratosthenesParallelPrimeFinderTest {
 
@@ -34,5 +35,27 @@ public class SieveOfEratosthenesParallelPrimeFinderTest {
         assertEquals(168, primes.size());
     }
 
-    // Add more test cases to cover edge cases, performance, and concurrency scenarios
+    @Test
+    public void testConcurrency() {
+        PrimeFinder primeFinder = new SieveOfEratosthenesParallelPrimeFinder();
+        int N = 1000000; // Test with a moderate range
+
+        // Perform multiple concurrent executions and validate results
+        List<Integer> primes1 = primeFinder.findPrimeNumbersInRange(N);
+        List<Integer> primes2 = primeFinder.findPrimeNumbersInRange(N);
+        List<Integer> primes3 = primeFinder.findPrimeNumbersInRange(N);
+
+        // Validate that results are consistent across multiple concurrent executions
+        assertEquals(primes1, primes2);
+        assertEquals(primes1, primes3);
+    }
+
+    @Test
+    public void testFindPrimeNumbersInRangeWithNegativeN() {
+        PrimeFinder primeFinder = new SieveOfEratosthenesParallelPrimeFinder();
+        int N = -10; // Test with a negative range
+
+        assertThrows(NegativeArraySizeException.class, () -> primeFinder.findPrimeNumbersInRange(N));
+
+    }
 }

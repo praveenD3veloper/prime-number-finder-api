@@ -3,6 +3,8 @@ package com.praveen.primefinder.controller;
 import com.praveen.primefinder.entity.Result;
 import com.praveen.primefinder.service.PrimeFinderService;
 import io.swagger.annotations.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "REST API for finding Prime numbers till N")
 public class PrimeNumberController {
 
+    private static final Logger logger = LoggerFactory.getLogger(PrimeNumberController.class);
 
     @Autowired
     private PrimeFinderService primeFinderService;
@@ -43,8 +46,14 @@ public class PrimeNumberController {
             final String algorithm){
 
         if(range <= 0){
+            logger.error("Invalid range provided in the request = {}", range);
             throw new IllegalArgumentException("invalid range");
         }
-        return new ResponseEntity<>(new Result(range, primeFinderService.findPrimeNumbersInRange(range, algorithm)), HttpStatus.OK);
+        logger.info("Received Request with range = {}, algorithm = {}", range, algorithm);
+
+        Result result = new Result(range, primeFinderService.findPrimeNumbersInRange(range, algorithm));
+        logger.info("Responded to the request with range = {} , algorithm = {} with response = {}", range, algorithm, result.getPrimes().toString());
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

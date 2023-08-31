@@ -54,6 +54,8 @@ public class StrategySelector {
             return sieveOfEratosthenesPrimeFinder;
         });
 
+        logger.info("Algorithm used = {}",requestedStrategy);
+
         return strategySupplier.get();
     }
 }

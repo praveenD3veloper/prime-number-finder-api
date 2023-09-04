@@ -21,7 +21,7 @@ Run the following command on the project root:
 
 To execute the applicatino jar:
 
-    java -jar ./prime-number-finder-api/target/prime-number-finder-api-0.0.1-SNAPSHOT.jar
+    java -jar target/prime-number-finder-api-0.0.1-SNAPSHOT.jar
 
 ## Hit the endpoint
 

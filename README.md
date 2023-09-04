@@ -47,4 +47,4 @@ In order to access the service you must hit the endpoint `http://localhost:8080/
 Please use the below example URL to access the service.
   <https://github-action-deploy-foun5bafea-nw.a.run.app/primes/10>
 
-## Since Cloud Run is a serverless service, it might go idle if there are no requests received for a brief period of time.  So the first request after the idle period might be a cold start and takes some to response
+Since Cloud Run is a serverless service, it might go idle if there are no requests received for a brief period of time.  So the first request after the idle period might be a cold start and takes some to response
